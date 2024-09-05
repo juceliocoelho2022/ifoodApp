@@ -24,11 +24,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.devjucelio.ifoodapp.R
+import com.devjucelio.ifoodapp.model.Food
 
 @Composable
 fun FoodItem(
+    food: Food
 
 ){
+
+    val imagemFood = food.imgFood
+    val foodName = food.foodName
+    val foodDescription = food.foodDescription
+    val price = food.price
 
     ConstraintLayout (
        modifier = Modifier
@@ -65,7 +72,7 @@ fun FoodItem(
 
         }
         Image(
-            painter = painterResource(id = R.drawable.food1),
+            painter = painterResource(imagemFood!!),
             contentDescription = null,
             modifier = Modifier
                 .constrainAs(imgFood){
@@ -77,7 +84,7 @@ fun FoodItem(
                 .size(60.dp)
         )
         Text(
-            text =  "Food1",
+            text =  foodName!!,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             color =  Color.White,
@@ -88,22 +95,19 @@ fun FoodItem(
             }
         )
         Text(
-            text = "Arroz branco como base.\n" +
-                    "Frango à parmegiana, coberto com molho de tomate e uma generosa camada de queijo derretido.\n" +
-                    "Brócolis cozido, como acompanhamento vegetal.\n" +
-                    "Batata palha, servida em uma porção separada.",
-            fontSize = 10.sp,
+            text = foodDescription!!,
+            fontSize = 13.sp,
             fontWeight = FontWeight.Bold,
             color =  Color.White,
             modifier =  Modifier.constrainAs(txtFoodDescription){
                 top.linkTo(txtFoodName.bottom)
                 start.linkTo(containerImg.end)
                 end.linkTo(parent.end)
-            }.padding(65.dp, 10.dp, 40.dp, 0.dp),
+            }.padding(65.dp, 10.dp, 40.dp, 5.dp),
              maxLines = 4
         )
         Text(
-            text =  "R$:25.90",
+            text =  price!!,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             color =  Color.White,
@@ -150,8 +154,3 @@ fun FoodItem(
 }
 
 
-@Composable
-@Preview
-private fun FoodItemPreview(){
-    FoodItem()
-}

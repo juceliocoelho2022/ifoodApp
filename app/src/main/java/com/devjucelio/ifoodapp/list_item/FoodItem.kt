@@ -19,44 +19,42 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.devjucelio.ifoodapp.R
 import com.devjucelio.ifoodapp.model.Food
 
 @Composable
 fun FoodItem(
     food: Food
 
-){
+) {
 
     val imagemFood = food.imgFood
     val foodName = food.foodName
     val foodDescription = food.foodDescription
     val price = food.price
 
-    ConstraintLayout (
-       modifier = Modifier
-           .fillMaxWidth()
-           .background(Color.Black)
-           .padding(0.dp, 10.dp, 0.dp, 10.dp)
-    ){
+    ConstraintLayout(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.Black)
+            .padding(0.dp, 10.dp, 0.dp, 10.dp)
+    ) {
 
-      val (
-          imgFood,
-          txtFoodName,
-          txtFoodDescription,
-          txtPrice,
-          btAddCart,
-          containerImg,
-          rowItem
-      )= createRefs()
+        val (
+            imgFood,
+            txtFoodName,
+            txtFoodDescription,
+            txtPrice,
+            btAddCart,
+            containerImg,
+            rowItem
+        ) = createRefs()
         Card(
             modifier = Modifier
-                .constrainAs(containerImg){
-                  top.linkTo(parent.top, 0.dp)
+                .constrainAs(containerImg) {
+                    top.linkTo(parent.top, 0.dp)
                     start.linkTo(parent.start, 0.dp)
                 }
                 .size(130.dp)
@@ -75,21 +73,21 @@ fun FoodItem(
             painter = painterResource(imagemFood!!),
             contentDescription = null,
             modifier = Modifier
-                .constrainAs(imgFood){
-                  top.linkTo(containerImg.top,0.dp)
+                .constrainAs(imgFood) {
+                    top.linkTo(containerImg.top, 0.dp)
                     start.linkTo(containerImg.start, 0.dp)
-                    end.linkTo(containerImg.end,0.dp)
-                    bottom.linkTo(containerImg.bottom,0.dp)
+                    end.linkTo(containerImg.end, 0.dp)
+                    bottom.linkTo(containerImg.bottom, 0.dp)
                 }
                 .size(60.dp)
         )
         Text(
-            text =  foodName!!,
+            text = foodName!!,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
-            color =  Color.White,
-            modifier =  Modifier.constrainAs(txtFoodName){
-                top.linkTo(parent.top,30.dp)
+            color = Color.White,
+            modifier = Modifier.constrainAs(txtFoodName) {
+                top.linkTo(parent.top, 30.dp)
                 start.linkTo(containerImg.end, 0.dp)
 
             }
@@ -98,21 +96,23 @@ fun FoodItem(
             text = foodDescription!!,
             fontSize = 13.sp,
             fontWeight = FontWeight.Bold,
-            color =  Color.White,
-            modifier =  Modifier.constrainAs(txtFoodDescription){
-                top.linkTo(txtFoodName.bottom)
-                start.linkTo(containerImg.end)
-                end.linkTo(parent.end)
-            }.padding(65.dp, 10.dp, 40.dp, 5.dp),
-             maxLines = 4
+            color = Color.White,
+            modifier = Modifier
+                .constrainAs(txtFoodDescription) {
+                    top.linkTo(txtFoodName.bottom)
+                    start.linkTo(containerImg.end)
+                    end.linkTo(parent.end)
+                }
+                .padding(65.dp, 10.dp, 40.dp, 5.dp),
+            maxLines = 4
         )
         Text(
-            text =  price!!,
+            text = price!!,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
-            color =  Color.White,
-            modifier =  Modifier.constrainAs(txtPrice){
-                top.linkTo(txtFoodDescription.bottom,20.dp)
+            color = Color.White,
+            modifier = Modifier.constrainAs(txtPrice) {
+                top.linkTo(txtFoodDescription.bottom, 20.dp)
                 start.linkTo(containerImg.end, 0.dp)
 
             }
@@ -121,32 +121,35 @@ fun FoodItem(
             onClick = {
 
             },
-            modifier = Modifier.height(45.dp)
-                .constrainAs(btAddCart){
-                    top.linkTo(txtFoodDescription.bottom,10.dp)
+            modifier = Modifier
+                .height(45.dp)
+                .constrainAs(btAddCart) {
+                    top.linkTo(txtFoodDescription.bottom, 10.dp)
                     start.linkTo(txtPrice.end, 10.dp)
-                    end.linkTo(parent.end,10.dp)
+                    end.linkTo(parent.end, 10.dp)
                 },
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFFF44336)
             )
         ) {
-            Text(text = "Add Card",
+            Text(
+                text = "Add Card",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
             )
         }
 
-        Row (
-           modifier = Modifier.width(350.dp)
-               .height(3.dp)
-               .background(Color.White)
-               .constrainAs(rowItem){
-                top.linkTo(txtPrice.bottom, 30.dp)
-                   start.linkTo(parent.start, 20.dp)
-                   end.linkTo(parent.end, 20.dp)
-              }
+        Row(
+            modifier = Modifier
+                .width(350.dp)
+                .height(3.dp)
+                .background(Color.White)
+                .constrainAs(rowItem) {
+                    top.linkTo(txtPrice.bottom, 30.dp)
+                    start.linkTo(parent.start, 20.dp)
+                    end.linkTo(parent.end, 20.dp)
+                }
         ) {
 
         }

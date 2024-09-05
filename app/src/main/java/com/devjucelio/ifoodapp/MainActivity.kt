@@ -56,13 +56,12 @@ private fun FoodList() {
             foodDescription = "Pratos vareados",
             price = "R$: 19.99"
         ),
-
-    Food(
-        imgFood = R.drawable.food6,
-        foodName = "Food 6",
-        foodDescription = "Pratos vareados",
-        price = "R$: 22.99"
-    ),
+        Food(
+            imgFood = R.drawable.food6,
+            foodName = "Food 6",
+            foodDescription = "Pratos vareados",
+            price = "R$: 22.99"
+        ),
         Food(
             imgFood = R.drawable.food7,
             foodName = "Food 7",
@@ -87,9 +86,7 @@ private fun FoodList() {
             foodDescription = "Pratos vareados",
             price = "R$: 15.99"
         ),
-
     )
-
     Column(
         modifier = Modifier
             .fillMaxSize()

@@ -2,9 +2,14 @@ package com.devjucelio.ifoodapp.list_item
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ShapeDefaults
@@ -12,7 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -108,9 +112,40 @@ fun FoodItem(
                 start.linkTo(containerImg.end, 0.dp)
 
             }
-
-
         )
+        Button(
+            onClick = {
+
+            },
+            modifier = Modifier.height(45.dp)
+                .constrainAs(btAddCart){
+                    top.linkTo(txtFoodDescription.bottom,10.dp)
+                    start.linkTo(txtPrice.end, 10.dp)
+                    end.linkTo(parent.end,10.dp)
+                },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFFF44336)
+            )
+        ) {
+            Text(text = "Add Card",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+        }
+
+        Row (
+           modifier = Modifier.width(350.dp)
+               .height(3.dp)
+               .background(Color.White)
+               .constrainAs(rowItem){
+                top.linkTo(txtPrice.bottom, 30.dp)
+                   start.linkTo(parent.start, 20.dp)
+                   end.linkTo(parent.end, 20.dp)
+              }
+        ) {
+
+        }
     }
 }
 
